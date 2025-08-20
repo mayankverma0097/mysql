@@ -1,0 +1,2354 @@
+where clause is used to filter data
+select * from employeeDetails where department = "sales"
+select * from employeeDetails where age > 25
+
+mysql> select * from studentdetails order by DOB;
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com  | m      |
++-------------+-------------+------------+------+----------------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from studentdetails order by DOB desc;
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com  | m      |
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from studentdetails where roll_Number between 101 and 102;
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com  | m      |
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from studentdetails where roll_Number between 102 and 103;
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+1 row in set (0.00 sec)
+
+
+
+
+mysql> select * from studentdetails where studentName like "A%";
++-------------+-------------+------------+------+---------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id             | gender |
++-------------+-------------+------------+------+---------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com | m      |
++-------------+-------------+------------+------+---------------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from studentdetails where studentName like "A_%";
++-------------+-------------+------------+------+---------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id             | gender |
++-------------+-------------+------------+------+---------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com | m      |
++-------------+-------------+------------+------+---------------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from studentdetails where studentName like "A__%";
++-------------+-------------+------------+------+---------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id             | gender |
++-------------+-------------+------------+------+---------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com | m      |
++-------------+-------------+------------+------+---------------------+--------+
+1 row in set (0.01 sec)
+
+mysql> select * from studentdetails where studentName like "M__%";    // there should be two charactres after M
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from studentdetails where studentName like "%r";
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com  | m      |
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from studentdetails where studentName like "%o%";
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+1 row in set (0.00 sec)
+
+
+mysql> select * from studentdetails where studentName like "__h%";
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from studentdetails where roll_Number in (101,102);
++-------------+-------------+------------+------+----------------------+--------+
+| roll_Number | studentName | DOB        | Age  | Mail_id              | gender |
++-------------+-------------+------------+------+----------------------+--------+
+|         101 | Aman Kumar  | 2022-06-15 |    5 | amankumar@gmail.com  | m      |
+|         102 | Mohan Kumar | 2019-06-15 |    5 | mohankumar@gmail.com | m      |
++-------------+-------------+------------+------+----------------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where course_id = 1;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where course_id = 1;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where fees_paid > 20000;
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between (1999-01-01 and 2000-12-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails  date_of_birth between 1999-01-01 and
+2000-12-31;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 1999-01-01 and 2000-12-31' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01
+ and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between (1999-01-0
+1 and 2000-12-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between '1999-01-01' and '2000-12-31';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city = 'indore' or 'bhopal';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city = 'indore' or city = 'bhopa
+l';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city in ('indore','bhopal');
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where name like 'a%';
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like 'a%';
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city    | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |         3 |  12000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar   |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like '%a';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where last_name like '%a';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like '%ha%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where email like '%lnct.com';
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city    | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |         3 |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain  |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where phone_number like '98%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number  from studentDetails where phone_number like '
+98%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | phone_number |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 | 9801234567   |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 | 9812340987   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 9812345670   |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 | 9823456789   |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 | 9876501234   |
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 | 9876543210   |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number  from studentDetails where state like '%pradesh%';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 9801234567   |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where state like '%pradesh%';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   | Madhya Pradesh |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 9801234567   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+10 rows in set (0.01 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where last_name like '%_____';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   | Madhya Pradesh |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where last_name like '_____';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where first_name like '_i%';mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where course_id = 1;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where course_id = 1;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where fees_paid > 20000;
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between (1999-01-01 and 2000-12-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails  date_of_birth between 1999-01-01 and
+2000-12-31;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 1999-01-01 and 2000-12-31' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01
+ and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between (1999-01-0
+1 and 2000-12-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between '1999-01-01' and '2000-12-31';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city = 'indore' or 'bhopal';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city = 'indore' or city = 'bhopa
+l';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city in ('indore','bhopal');
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where name like 'a%';
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like 'a%';
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city    | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |         3 |  12000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar   |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like '%a';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where last_name like '%a';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like '%ha%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where email like '%lnct.com';
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city    | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |         3 |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain  |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where phone_number like '98%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number  from studentDetails where phone_number like '
+98%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | phone_number |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 | 9801234567   |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 | 9812340987   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 9812345670   |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 | 9823456789   |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 | 9876501234   |
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 | 9876543210   |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number  from studentDetails where state like '%pradesh%';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 9801234567   |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where state like '%pradesh%';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   | Madhya Pradesh |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 9801234567   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+10 rows in set (0.01 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where last_name like '%_____';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   | Madhya Pradesh |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where last_name like '_____';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where first_name like '_i%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,address  from studentDetails where address like '%Road%' ;
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | address       |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 | 123 MG Road   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 56 AB Road    |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 | 45 Tilak Road |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,address  from studentDetails where address like '%Road%' ;
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | address       |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 | 123 MG Road   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 56 AB Road    |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 | 45 Tilak Road |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where course_id = 1;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where course_id = 1;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where fees_paid > 20000;
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between (1999-01-01 and 2000-12-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails  date_of_birth between 1999-01-01 and
+2000-12-31;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 1999-01-01 and 2000-12-31' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01
+ and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between (1999-01-0
+1 and 2000-12-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | fees_paid |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |  20000.00 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |  22000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |
++-----------+------------+-----------+--------+---------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between 1999-01-01 and 2000-12-31;
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where date_of_birth between '1999-01-01' and '2000-12-31';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city = 'indore' or 'bhopal';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city = 'indore' or city = 'bhopa
+l';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where city in ('indore','bhopal');
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where name like 'a%';
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like 'a%';
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city    | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |         3 |  12000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar   |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like '%a';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where last_name like '%a';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal |         2 |  20000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where first_name like '%ha%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where email like '%lnct.com';
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city    | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |         3 |  12000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain  |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+---------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid  from studentDetails where phone_number like '98%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 |
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number  from studentDetails where phone_number like '
+98%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | phone_number |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa   |         2 |  22000.00 | 9801234567   |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 | 9812340987   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 9812345670   |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna  |         3 |  11000.00 | 9823456789   |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain |         1 |  15000.00 | 9876501234   |
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 | 9876543210   |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number  from studentDetails where state like '%pradesh%';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 9801234567   |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where state like '%pradesh%';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   | Madhya Pradesh |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 9801234567   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+10 rows in set (0.01 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where last_name like '%_____';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 9876543210   | Madhya Pradesh |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 9812340987   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where last_name like '_____';
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 9123456780   | Madhya Pradesh |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 9988776655   | Madhya Pradesh |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 9876501234   | Madhya Pradesh |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 9798654321   | Madhya Pradesh |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 9823456789   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+--------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,phone_number,state  from studentDetails where first_name like '_i%';
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | phone_number | state          |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore |         2 |  25000.00 | 9123098765   | Madhya Pradesh |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 9812345670   | Madhya Pradesh |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+--------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,address  from studentDetails where address like '%Road%' ;
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+| studentId | first_name | last_name | gender | date_of_birth | city   | course_id | fees_paid | address       |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore |         1 |  15000.00 | 123 MG Road   |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |         3 |  10000.00 | 56 AB Road    |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar  |         1 |  15000.00 | 45 Tilak Road |
++-----------+------------+-----------+--------+---------------+--------+-----------+-----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select first_name,fees_paid + 400 + 1500 from studentDetails;
++------------+------------------------+
+| first_name | fees_paid + 400 + 1500 |
++------------+------------------------+
+| Rahul      |               16900.00 |
+| Priya      |               21900.00 |
+| Amit       |               13900.00 |
+| Neha       |               16900.00 |
+| Vikram     |               26900.00 |
+| Ritu       |               11900.00 |
+| Suresh     |               16900.00 |
+| Kavita     |               23900.00 |
+| Manish     |               12900.00 |
+| Anjali     |               16900.00 |
++------------+------------------------+
+10 rows in set (0.00 sec)
+mysql> select first_name,fees_paid + 400 + 1500 as total_fees  from studentDetails;
++------------+------------+
+| first_name | total_fees |
++------------+------------+
+| Rahul      |   16900.00 |
+| Priya      |   21900.00 |
+| Amit       |   13900.00 |
+| Neha       |   16900.00 |
+| Vikram     |   26900.00 |
+| Ritu       |   11900.00 |
+| Suresh     |   16900.00 |
+| Kavita     |   23900.00 |
+| Manish     |   12900.00 |
+| Anjali     |   16900.00 |
++------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select first_name,fees_paid + 400 + 1500 - 1000  as total_fees  from studentDetails;
++------------+------------+
+| first_name | total_fees |
++------------+------------+
+| Rahul      |   15900.00 |
+| Priya      |   20900.00 |
+| Amit       |   12900.00 |
+| Neha       |   15900.00 |
+| Vikram     |   25900.00 |
+| Ritu       |   10900.00 |
+| Suresh     |   15900.00 |
+| Kavita     |   22900.00 |
+| Manish     |   11900.00 |
+| Anjali     |   15900.00 |
++------------+------------+
+10 rows in set (0.00 sec)
+
+calculate age
+
+mysql> select first_name , year(current_date()) -  year(date_of_birth) as age from studentDetails;
++------------+------+
+| first_name | age  |
++------------+------+
+| Rahul      |   25 |
+| Priya      |   26 |
+| Amit       |   24 |
+| Neha       |   27 |
+| Vikram     |   25 |
+| Ritu       |   26 |
+| Suresh     |   24 |
+| Kavita     |   25 |
+| Manish     |   27 |
+| Anjali     |   24 |
++------------+------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name , (year(current_date()) -  year(date_of_birth))*12  as age from studentDetails;
++------------+------+
+| first_name | age  |
++------------+------+
+| Rahul      |  300 |
+| Priya      |  312 |
+| Amit       |  288 |
+| Neha       |  324 |
+| Vikram     |  300 |
+| Ritu       |  312 |
+| Suresh     |  288 |
+| Kavita     |  300 |
+| Manish     |  324 |
+| Anjali     |  288 |
++------------+------+
+10 rows in set (0.00 sec)
+
+
+mysql> select first_name , fees_paid + fees_paid * 10/100 as increment_fees from studentDetails;
++------------+----------------+
+| first_name | increment_fees |
++------------+----------------+
+| Rahul      |   16500.000000 |
+| Priya      |   22000.000000 |
+| Amit       |   13200.000000 |
+| Neha       |   16500.000000 |
+| Vikram     |   27500.000000 |
+| Ritu       |   11000.000000 |
+| Suresh     |   16500.000000 |
+| Kavita     |   24200.000000 |
+| Manish     |   12100.000000 |
+| Anjali     |   16500.000000 |
++------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,pincode/2  from studentDetails;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+-----------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | pincode/2 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+-----------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 |  226000.5 |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 |  231000.5 |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 |  237000.5 |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 |  228000.5 |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 |    226005 |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 |    231010 |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 |  241000.5 |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 |  243000.5 |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 |  242500.5 |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 |  235000.5 |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+-----------+
+10 rows in set (0.00 sec)
+
+
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,pincode  from studentDetails where pincode is not null;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+---------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | pincode |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+---------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 452001  |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 462001  |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 474001  |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 456001  |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 452010  |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 462020  |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 482001  |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 486001  |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 485001  |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 470001  |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,pincode  from studentDetails where pincode is null;
+Empty set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,gender,date_of_birth,city,course_id,fees_paid,pincode  from studentDetails where pincode is not null;
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+---------+
+| studentId | first_name | last_name | gender | date_of_birth | city     | course_id | fees_paid | pincode |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+---------+
+|         1 | Rahul      | Sharma    | Male   | 2000-05-12    | Indore   |         1 |  15000.00 | 452001  |
+|         2 | Priya      | Verma     | Female | 1999-08-25    | Bhopal   |         2 |  20000.00 | 462001  |
+|         3 | Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |         3 |  12000.00 | 474001  |
+|         4 | Neha       | Singh     | Female | 1998-07-22    | Ujjain   |         1 |  15000.00 | 456001  |
+|         5 | Vikram     | Patel     | Male   | 2000-03-10    | Indore   |         2 |  25000.00 | 452010  |
+|         6 | Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |         3 |  10000.00 | 462020  |
+|         7 | Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |         1 |  15000.00 | 482001  |
+|         8 | Kavita     | Rao       | Female | 2000-06-28    | Rewa     |         2 |  22000.00 | 486001  |
+|         9 | Manish     | Gupta     | Male   | 1998-04-19    | Satna    |         3 |  11000.00 | 485001  |
+|        10 | Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |         1 |  15000.00 | 470001  |
++-----------+------------+-----------+--------+---------------+----------+-----------+-----------+---------+
+10 rows in set (0.00 sec)
+
+
+
+
+mysql> select city , count(*) as total_student from studentDetails group by city;
++----------+---------------+
+| city     | total_student |
++----------+---------------+
+| Indore   |             2 |
+| Bhopal   |             2 |
+| Gwalior  |             1 |
+| Ujjain   |             1 |
+| Jabalpur |             1 |
+| Rewa     |             1 |
+| Satna    |             1 |
+| Sagar    |             1 |
++----------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> select city , count(city) as total_student from studentDetails group by city;
++----------+---------------+
+| city     | total_student |
++----------+---------------+
+| Indore   |             2 |
+| Bhopal   |             2 |
+| Gwalior  |             1 |
+| Ujjain   |             1 |
+| Jabalpur |             1 |
+| Rewa     |             1 |
+| Satna    |             1 |
+| Sagar    |             1 |
++----------+---------------+
+8 rows in set (0.01 sec)
+
+
+mysql> select state , count(*) as total_student from studentDetails group by state;
++----------------+---------------+
+| state          | total_student |
++----------------+---------------+
+| Madhya Pradesh |            10 |
++----------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+mysql> select course_id , count(*) as total_student from studentDetails group by course_id;
++-----------+---------------+
+| course_id | total_student |
++-----------+---------------+
+|         1 |             4 |
+|         2 |             3 |
+|         3 |             3 |
++-----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select gender , count(*) as total_student from studentDetails group by gender;
++--------+---------------+
+| gender | total_student |
++--------+---------------+
+| Male   |             5 |
+| Female |             5 |
++--------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select city ,gender,  count(*) as total_student from studentDetails group by city,gender;
++----------+--------+---------------+
+| city     | gender | total_student |
++----------+--------+---------------+
+| Indore   | Male   |             2 |
+| Bhopal   | Female |             2 |
+| Gwalior  | Male   |             1 |
+| Ujjain   | Female |             1 |
+| Jabalpur | Male   |             1 |
+| Rewa     | Female |             1 |
+| Satna    | Male   |             1 |
+| Sagar    | Female |             1 |
++----------+--------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> select year(date_of_birth) , count(*) as total_student from studentDetails group by year(date_of_birth);
++---------------------+---------------+
+| year(date_of_birth) | total_student |
++---------------------+---------------+
+|                2000 |             3 |
+|                1999 |             2 |
+|                2001 |             3 |
+|                1998 |             2 |
++---------------------+---------------+
+4 rows in set (0.00 sec)
+
+
+mysql>  select first_name , year(current_date()) -  year(date_of_birth) as age from studentDetails;
++------------+------+
+| first_name | age  |
++------------+------+
+| Rahul      |   25 |
+| Priya      |   26 |
+| Amit       |   24 |
+| Neha       |   27 |
+| Vikram     |   25 |
+| Ritu       |   26 |
+| Suresh     |   24 |
+| Kavita     |   25 |
+| Manish     |   27 |
+| Anjali     |   24 |
++------------+------+
+10 rows in set (0.00 sec)
+
+mysql>  select year(current_date()) -  year(date_of_birth) ,count(*) from studentDetails group by year(current_date()) -  year(date_of_birth);
++---------------------------------------------+----------+
+| year(current_date()) -  year(date_of_birth) | count(*) |
++---------------------------------------------+----------+
+|                                          25 |        3 |
+|                                          26 |        2 |
+|                                          24 |        3 |
+|                                          27 |        2 |
++---------------------------------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select city,avg(fees_paid) as average_fees_paid from studentDetails group by city;
++----------+-------------------+
+| city     | average_fees_paid |
++----------+-------------------+
+| Indore   |      20000.000000 |
+| Bhopal   |      15000.000000 |
+| Gwalior  |      12000.000000 |
+| Ujjain   |      15000.000000 |
+| Jabalpur |      15000.000000 |
+| Rewa     |      22000.000000 |
+| Satna    |      11000.000000 |
+| Sagar    |      15000.000000 |
++----------+-------------------+
+8 rows in set (0.00 sec)
+
+
+mysql> select city,sum(fees_paid) as total_fees_paid from studentDetails group by city;
++----------+-----------------+
+| city     | total_fees_paid |
++----------+-----------------+
+| Indore   |        40000.00 |
+| Bhopal   |        30000.00 |
+| Gwalior  |        12000.00 |
+| Ujjain   |        15000.00 |
+| Jabalpur |        15000.00 |
+| Rewa     |        22000.00 |
+| Satna    |        11000.00 |
+| Sagar    |        15000.00 |
++----------+-----------------+
+8 rows in set (0.00 sec)
+
+
+mysql> select city,max(fees_paid) as total_fees_paid from studentDetails group by city;
++----------+-----------------+
+| city     | total_fees_paid |
++----------+-----------------+
+| Indore   |        25000.00 |
+| Bhopal   |        20000.00 |
+| Gwalior  |        12000.00 |
+| Ujjain   |        15000.00 |
+| Jabalpur |        15000.00 |
+| Rewa     |        22000.00 |
+| Satna    |        11000.00 |
+| Sagar    |        15000.00 |
++----------+-----------------+
+8 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select city,min(fees_paid) as total_fees_paid from studentDetails group by city;
++----------+-----------------+
+| city     | total_fees_paid |
++----------+-----------------+
+| Indore   |        15000.00 |
+| Bhopal   |        10000.00 |
+| Gwalior  |        12000.00 |
+| Ujjain   |        15000.00 |
+| Jabalpur |        15000.00 |
+| Rewa     |        22000.00 |
+| Satna    |        11000.00 |
+| Sagar    |        15000.00 |
++----------+-----------------+
+8 rows in set (0.00 sec)
+
+mysql> 
+
+
+
+mysql> select city,first_name ,min(fees_paid) as total_fees_paid from studentDetails group by city,first_name order by total_fees_paid;
++----------+------------+-----------------+
+| city     | first_name | total_fees_paid |
++----------+------------+-----------------+
+| Bhopal   | Ritu       |        10000.00 |
+| Satna    | Manish     |        11000.00 |
+| Gwalior  | Amit       |        12000.00 |
+| Indore   | Rahul      |        15000.00 |
+| Ujjain   | Neha       |        15000.00 |
+| Jabalpur | Suresh     |        15000.00 |
+| Sagar    | Anjali     |        15000.00 |
+| Bhopal   | Priya      |        20000.00 |
+| Rewa     | Kavita     |        22000.00 |
+| Indore   | Vikram     |        25000.00 |
++----------+------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select city,first_name ,min(fees_paid) as total_fees_paid from studentDetails group by city,first_name order by total_fees_paid;
++----------+------------+-----------------+
+| city     | first_name | total_fees_paid |
++----------+------------+-----------------+
+| Bhopal   | Ritu       |        10000.00 |
+| Satna    | Manish     |        11000.00 |
+| Gwalior  | Amit       |        12000.00 |
+| Indore   | Rahul      |        15000.00 |
+| Ujjain   | Neha       |        15000.00 |
+| Jabalpur | Suresh     |        15000.00 |
+| Sagar    | Anjali     |        15000.00 |
+| Bhopal   | Priya      |        20000.00 |
+| Rewa     | Kavita     |        22000.00 |
+| Indore   | Vikram     |        25000.00 |
++----------+------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select city,first_name ,min(fees_paid) as minimum_fees_paid from studentDetails group by city,first_name order by min(fees_paid);
++----------+------------+-------------------+
+| city     | first_name | minimum_fees_paid |
++----------+------------+-------------------+
+| Bhopal   | Ritu       |          10000.00 |
+| Satna    | Manish     |          11000.00 |
+| Gwalior  | Amit       |          12000.00 |
+| Indore   | Rahul      |          15000.00 |
+| Ujjain   | Neha       |          15000.00 |
+| Jabalpur | Suresh     |          15000.00 |
+| Sagar    | Anjali     |          15000.00 |
+| Bhopal   | Priya      |          20000.00 |
+| Rewa     | Kavita     |          22000.00 |
+| Indore   | Vikram     |          25000.00 |
++----------+------------+-------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+
+Database changed
+mysql> select city ,count(*) as total_student from studentDetails group by city having count(*)>=2;
++--------+---------------+
+| city   | total_student |
++--------+---------------+
+| Indore |             2 |
+| Bhopal |             2 |
++--------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> select state ,avg(fees_paid) as average_fees  from studentDetails group by state having avg(fees_paid)>=20000;
+Empty set (0.00 sec)
+
+mysql> select state ,avg(fees_paid) as average_fees  from studentDetails group by state having avg(fees_paid)>=10000;
++----------------+--------------+
+| state          | average_fees |
++----------------+--------------+
+| Madhya Pradesh | 16000.000000 |
++----------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select city ,avg(fees_paid) as average_fees  from studentDetails group by city having avg(fees_paid)>=10000;
++----------+--------------+
+| city     | average_fees |
++----------+--------------+
+| Indore   | 20000.000000 |
+| Bhopal   | 15000.000000 |
+| Gwalior  | 12000.000000 |
+| Ujjain   | 15000.000000 |
+| Jabalpur | 15000.000000 |
+| Rewa     | 22000.000000 |
+| Satna    | 11000.000000 |
+| Sagar    | 15000.000000 |
++----------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select city ,avg(fees_paid) as average_fees  from studentDetails group by city having avg(fees_paid)>=20000;
++--------+--------------+
+| city   | average_fees |
++--------+--------------+
+| Indore | 20000.000000 |
+| Rewa   | 22000.000000 |
++--------+--------------+
+2 rows in set (0.01 sec)
+
+mysql> ^C
+mysql> 
+
+mysql> select course_id ,sum(fees_paid) as total_fees  from studentDetails group by course_id having sum(fees_paid)>=30000;
++-----------+------------+
+| course_id | total_fees |
++-----------+------------+
+|         1 |   60000.00 |
+|         2 |   67000.00 |
+|         3 |   33000.00 |
++-----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select gender, count(studentId) from studentDetails group by gender having  count(studentId) >= 3;
++--------+------------------+
+| gender | count(studentId) |
++--------+------------------+
+| Male   |                5 |
+| Female |                5 |
++--------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select month(date_of_birth) , count(*) as total_student from studentDetails group by month(date_of_birth) having count(*) >= 1;
++----------------------+---------------+
+| month(date_of_birth) | total_student |
++----------------------+---------------+
+|                    5 |             1 |
+|                    8 |             1 |
+|                    1 |             1 |
+|                    7 |             1 |
+|                    3 |             1 |
+|                   11 |             1 |
+|                    9 |             1 |
+|                    6 |             1 |
+|                    4 |             1 |
+|                   12 |             1 |
++----------------------+---------------+
+10 rows in set (0.00 sec)
+
+mysql> select city , max(fees_paid) as maximum_fees from studentDetails group by city  having max(fees_paid)>= 10000;
++----------+--------------+
+| city     | maximum_fees |
++----------+--------------+
+| Indore   |     25000.00 |
+| Bhopal   |     20000.00 |
+| Gwalior  |     12000.00 |
+| Ujjain   |     15000.00 |
+| Jabalpur |     15000.00 |
+| Rewa     |     22000.00 |
+| Satna    |     11000.00 |
+| Sagar    |     15000.00 |
++----------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select city , sum(fees_paid) as total_fees from studentDetails group by city having sum(fees_paid) >=40000;
++--------+------------+
+| city   | total_fees |
++--------+------------+
+| Indore |   40000.00 |
++--------+------------+
+1 row in set (0.01 sec)
+
+mysql> 
+
+mysql> select city , sum(fees_paid) as total_fees from studentDetails group by city having sum(fees_paid) >=40000;
++--------+------------+
+| city   | total_fees |
++--------+------------+
+| Indore |   40000.00 |
++--------+------------+
+1 row in set (0.01 sec)
+
+mysql> 
+
+mysql> select city , avg(fees_paid) from studentDetails group by  city having avg(fees_paid) < 15000;
++---------+----------------+
+| city    | avg(fees_paid) |
++---------+----------------+
+| Gwalior |   12000.000000 |
+| Satna   |   11000.000000 |
++---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select course_id , count(*) from studentDetails group by  course_id having count(*) >=2;
++-----------+----------+
+| course_id | count(*) |
++-----------+----------+
+|         1 |        4 |
+|         2 |        3 |
+|         3 |        3 |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+
+limit is used to restrict the number of rows returned by a query
+it is very useful when you want only the first few results or for pagination
+
+
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails limit 5;
++------------+-----------+--------+---------------+---------+-----------+
+| first_name | last_name | gender | date_of_birth | city    | fees_paid |
++------------+-----------+--------+---------------+---------+-----------+
+| Rahul      | Sharma    | Male   | 2000-05-12    | Indore  |  15000.00 |
+| Priya      | Verma     | Female | 1999-08-25    | Bhopal  |  20000.00 |
+| Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |  12000.00 |
+| Neha       | Singh     | Female | 1998-07-22    | Ujjain  |  15000.00 |
+| Vikram     | Patel     | Male   | 2000-03-10    | Indore  |  25000.00 |
++------------+-----------+--------+---------------+---------+-----------+
+5 rows in set (0.01 sec)
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid from studentDetails order by first_name limit 3;
++------------+-----------+--------+---------------+---------+-----------+
+| first_name | last_name | gender | date_of_birth | city    | fees_paid |
++------------+-----------+--------+---------------+---------+-----------+
+| Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |  12000.00 |
+| Anjali     | Chopra    | Female | 2001-12-03    | Sagar   |  15000.00 |
+| Kavita     | Rao       | Female | 2000-06-28    | Rewa    |  22000.00 |
++------------+-----------+--------+---------------+---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails limit 5,2;
++------------+-----------+--------+---------------+----------+-----------+
+| first_name | last_name | gender | date_of_birth | city     | fees_paid |
++------------+-----------+--------+---------------+----------+-----------+
+| Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |
+| Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |
++------------+-----------+--------+---------------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails order by fees_paid limit 5;
++------------+-----------+--------+---------------+---------+-----------+
+| first_name | last_name | gender | date_of_birth | city    | fees_paid |
++------------+-----------+--------+---------------+---------+-----------+
+| Ritu       | Mehta     | Female | 1999-11-05    | Bhopal  |  10000.00 |
+| Manish     | Gupta     | Male   | 1998-04-19    | Satna   |  11000.00 |
+| Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |  12000.00 |
+| Rahul      | Sharma    | Male   | 2000-05-12    | Indore  |  15000.00 |
+| Neha       | Singh     | Female | 1998-07-22    | Ujjain  |  15000.00 |
++------------+-----------+--------+---------------+---------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails order by fees_paid desc limit 5;
++------------+-----------+--------+---------------+--------+-----------+
+| first_name | last_name | gender | date_of_birth | city   | fees_paid |
++------------+-----------+--------+---------------+--------+-----------+
+| Vikram     | Patel     | Male   | 2000-03-10    | Indore |  25000.00 |
+| Kavita     | Rao       | Female | 2000-06-28    | Rewa   |  22000.00 |
+| Priya      | Verma     | Female | 1999-08-25    | Bhopal |  20000.00 |
+| Rahul      | Sharma    | Male   | 2000-05-12    | Indore |  15000.00 |
+| Neha       | Singh     | Female | 1998-07-22    | Ujjain |  15000.00 |
++------------+-----------+--------+---------------+--------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails order by year(date_of_birth) desc limit 1 ;
++------------+-----------+--------+---------------+-------+-----------+
+| first_name | last_name | gender | date_of_birth | city  | fees_paid |
++------------+-----------+--------+---------------+-------+-----------+
+| Anjali     | Chopra    | Female | 2001-12-03    | Sagar |  15000.00 |
++------------+-----------+--------+---------------+-------+-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid  from studentDetails order by year(date_of_birth) limit 1;
++------------+-----------+--------+---------------+--------+-----------+
+| first_name | last_name | gender | date_of_birth | city   | fees_paid |
++------------+-----------+--------+---------------+--------+-----------+
+| Neha       | Singh     | Female | 1998-07-22    | Ujjain |  15000.00 |
++------------+-----------+--------+---------------+--------+-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails where course_id =1 limit 2;
++------------+-----------+--------+---------------+--------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city   | fees_paid | course_id |
++------------+-----------+--------+---------------+--------+-----------+-----------+
+| Rahul      | Sharma    | Male   | 2000-05-12    | Indore |  15000.00 |         1 |
+| Neha       | Singh     | Female | 1998-07-22    | Ujjain |  15000.00 |         1 |
++------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails limit 2,4;
++------------+-----------+--------+---------------+---------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city    | fees_paid | course_id |
++------------+-----------+--------+---------------+---------+-----------+-----------+
+| Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |  12000.00 |         3 |
+| Neha       | Singh     | Female | 1998-07-22    | Ujjain  |  15000.00 |         1 |
+| Vikram     | Patel     | Male   | 2000-03-10    | Indore  |  25000.00 |         2 |
+| Ritu       | Mehta     | Female | 1999-11-05    | Bhopal  |  10000.00 |         3 |
++------------+-----------+--------+---------------+---------+-----------+-----------+
+4 rows in set (0.01 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails where city = 'bhopal' order by fees_paid desc limit 3;
++------------+-----------+--------+---------------+--------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city   | fees_paid | course_id |
++------------+-----------+--------+---------------+--------+-----------+-----------+
+| Priya      | Verma     | Female | 1999-08-25    | Bhopal |  20000.00 |         2 |
+| Ritu       | Mehta     | Female | 1999-11-05    | Bhopal |  10000.00 |         3 |
++------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+offset tells mysql how many rows to skip before starting to return results
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails order by year(date_of_birth) desc limit 3,2;
++------------+-----------+--------+---------------+--------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city   | fees_paid | course_id |
++------------+-----------+--------+---------------+--------+-----------+-----------+
+| Rahul      | Sharma    | Male   | 2000-05-12    | Indore |  15000.00 |         1 |
+| Vikram     | Patel     | Male   | 2000-03-10    | Indore |  25000.00 |         2 |
++------------+-----------+--------+---------------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails order by fees_paid desc limit 5,5;
++------------+-----------+--------+---------------+----------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city     | fees_paid | course_id |
++------------+-----------+--------+---------------+----------+-----------+-----------+
+| Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |         1 |
+| Anjali     | Chopra    | Female | 2001-12-03    | Sagar    |  15000.00 |         1 |
+| Amit       | Kumar     | Male   | 2001-01-18    | Gwalior  |  12000.00 |         3 |
+| Manish     | Gupta     | Male   | 1998-04-19    | Satna    |  11000.00 |         3 |
+| Ritu       | Mehta     | Female | 1999-11-05    | Bhopal   |  10000.00 |         3 |
++------------+-----------+--------+---------------+----------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails limit 2 offset 8;
++------------+-----------+--------+---------------+-------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city  | fees_paid | course_id |
++------------+-----------+--------+---------------+-------+-----------+-----------+
+| Manish     | Gupta     | Male   | 1998-04-19    | Satna |  11000.00 |         3 |
+| Anjali     | Chopra    | Female | 2001-12-03    | Sagar |  15000.00 |         1 |
++------------+-----------+--------+---------------+-------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails order by last_name desc limit 4,4;
++------------+-----------+--------+---------------+---------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city    | fees_paid | course_id |
++------------+-----------+--------+---------------+---------+-----------+-----------+
+| Kavita     | Rao       | Female | 2000-06-28    | Rewa    |  22000.00 |         2 |
+| Vikram     | Patel     | Male   | 2000-03-10    | Indore  |  25000.00 |         2 |
+| Ritu       | Mehta     | Female | 1999-11-05    | Bhopal  |  10000.00 |         3 |
+| Amit       | Kumar     | Male   | 2001-01-18    | Gwalior |  12000.00 |         3 |
++------------+-----------+--------+---------------+---------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,gender,date_of_birth,city,fees_paid,course_id  from studentDetails limit 6,1;
++------------+-----------+--------+---------------+----------+-----------+-----------+
+| first_name | last_name | gender | date_of_birth | city     | fees_paid | course_id |
++------------+-----------+--------+---------------+----------+-----------+-----------+
+| Suresh     | Yadav     | Male   | 2001-09-14    | Jabalpur |  15000.00 |         1 |
++------------+-----------+--------+---------------+----------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+
+mysql> select s.first_name,s.last_name,c.course_name from studentDetails s inner join courses c on s.course_id = c.course_id;
++------------+-----------+------------------------+
+| first_name | last_name | course_name            |
++------------+-----------+------------------------+
+| Rahul      | Sharma    | Computer Science       |
+| Priya      | Verma     | Mechanical Engineering |
+| Amit       | Kumar     | Civil Engineering      |
+| Neha       | Singh     | Computer Science       |
+| Vikram     | Patel     | Mechanical Engineering |
+| Ritu       | Mehta     | Civil Engineering      |
+| Suresh     | Yadav     | Computer Science       |
+| Kavita     | Rao       | Mechanical Engineering |
+| Manish     | Gupta     | Civil Engineering      |
+| Anjali     | Chopra    | Computer Science       |
++------------+-----------+------------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select s.first_name,s.last_name,s.city,c.* from studentDetails s inner join courses c on s.course_id = c.course_id;
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+| first_name | last_name | city     | course_id | course_name            | duration_months | fees      |
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+| Rahul      | Sharma    | Indore   |         1 | Computer Science       |              36 | 120000.00 |
+| Priya      | Verma     | Bhopal   |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Amit       | Kumar     | Gwalior  |         3 | Civil Engineering      |              48 | 140000.00 |
+| Neha       | Singh     | Ujjain   |         1 | Computer Science       |              36 | 120000.00 |
+| Vikram     | Patel     | Indore   |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Ritu       | Mehta     | Bhopal   |         3 | Civil Engineering      |              48 | 140000.00 |
+| Suresh     | Yadav     | Jabalpur |         1 | Computer Science       |              36 | 120000.00 |
+| Kavita     | Rao       | Rewa     |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Manish     | Gupta     | Satna    |         3 | Civil Engineering      |              48 | 140000.00 |
+| Anjali     | Chopra    | Sagar    |         1 | Computer Science       |              36 | 120000.00 |
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select s.first_name,s.last_name,s.city,c.* from studentDetails s inner join courses c on s.course_id = c.course_id where s.city = 'bhopal';
++------------+-----------+--------+-----------+------------------------+-----------------+-----------+
+| first_name | last_name | city   | course_id | course_name            | duration_months | fees      |
++------------+-----------+--------+-----------+------------------------+-----------------+-----------+
+| Priya      | Verma     | Bhopal |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Ritu       | Mehta     | Bhopal |         3 | Civil Engineering      |              48 | 140000.00 |
++------------+-----------+--------+-----------+------------------------+-----------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select s.first_name,s.last_name,s.city,c.* from studentDetails s inner join courses c on s.course_id = c.course_id where c.fees > 140000;
++------------+-----------+--------+-----------+------------------------+-----------------+-----------+
+| first_name | last_name | city   | course_id | course_name            | duration_months | fees      |
++------------+-----------+--------+-----------+------------------------+-----------------+-----------+
+| Priya      | Verma     | Bhopal |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Vikram     | Patel     | Indore |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Kavita     | Rao       | Rewa   |         2 | Mechanical Engineering |              48 | 150000.00 |
++------------+-----------+--------+-----------+------------------------+-----------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select s.first_name,s.last_name,s.city,c.* from studentDetails s inner join courses c on s.course_id = c.course_id ;
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+| first_name | last_name | city     | course_id | course_name            | duration_months | fees      |
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+| Rahul      | Sharma    | Indore   |         1 | Computer Science       |              36 | 120000.00 |
+| Priya      | Verma     | Bhopal   |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Amit       | Kumar     | Gwalior  |         3 | Civil Engineering      |              48 | 140000.00 |
+| Neha       | Singh     | Ujjain   |         1 | Computer Science       |              36 | 120000.00 |
+| Vikram     | Patel     | Indore   |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Ritu       | Mehta     | Bhopal   |         3 | Civil Engineering      |              48 | 140000.00 |
+| Suresh     | Yadav     | Jabalpur |         1 | Computer Science       |              36 | 120000.00 |
+| Kavita     | Rao       | Rewa     |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Manish     | Gupta     | Satna    |         3 | Civil Engineering      |              48 | 140000.00 |
+| Anjali     | Chopra    | Sagar    |         1 | Computer Science       |              36 | 120000.00 |
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select s.first_name,s.last_name,s.city,c.* from studentDetails s inner join courses c on s.course_id = c.course_id  where c.duration_months = 36;
++------------+-----------+----------+-----------+------------------+-----------------+-----------+
+| first_name | last_name | city     | course_id | course_name      | duration_months | fees      |
++------------+-----------+----------+-----------+------------------+-----------------+-----------+
+| Rahul      | Sharma    | Indore   |         1 | Computer Science |              36 | 120000.00 |
+| Neha       | Singh     | Ujjain   |         1 | Computer Science |              36 | 120000.00 |
+| Suresh     | Yadav     | Jabalpur |         1 | Computer Science |              36 | 120000.00 |
+| Anjali     | Chopra    | Sagar    |         1 | Computer Science |              36 | 120000.00 |
++------------+-----------+----------+-----------+------------------+-----------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select s.first_name,s.last_name,s.city,c.* from studentDetails s inner join courses c on s.course_id = c.course_id  order by c.fees desc;
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+| first_name | last_name | city     | course_id | course_name            | duration_months | fees      |
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+| Priya      | Verma     | Bhopal   |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Vikram     | Patel     | Indore   |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Kavita     | Rao       | Rewa     |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Amit       | Kumar     | Gwalior  |         3 | Civil Engineering      |              48 | 140000.00 |
+| Ritu       | Mehta     | Bhopal   |         3 | Civil Engineering      |              48 | 140000.00 |
+| Manish     | Gupta     | Satna    |         3 | Civil Engineering      |              48 | 140000.00 |
+| Rahul      | Sharma    | Indore   |         1 | Computer Science       |              36 | 120000.00 |
+| Neha       | Singh     | Ujjain   |         1 | Computer Science       |              36 | 120000.00 |
+| Suresh     | Yadav     | Jabalpur |         1 | Computer Science       |              36 | 120000.00 |
+| Anjali     | Chopra    | Sagar    |         1 | Computer Science       |              36 | 120000.00 |
++------------+-----------+----------+-----------+------------------------+-----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select c.course_name,count(*) from studentDetails s inner join courses c on s.course_id = c.course_id group by c.course_name;
++------------------------+----------+
+| course_name            | count(*) |
++------------------------+----------+
+| Computer Science       |        4 |
+| Mechanical Engineering |        3 |
+| Civil Engineering      |        3 |
++------------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select c.course_name,sum(fees_paid) from studentDetails s inner join courses c on s.course_id = c.course_id group by c.course_name;
++------------------------+----------------+
+| course_name            | sum(fees_paid) |
++------------------------+----------------+
+| Computer Science       |       60000.00 |
+| Mechanical Engineering |       67000.00 |
+| Civil Engineering      |       33000.00 |
++------------------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+
+left join
+
+mysql> select s.first_name,c.* from studentDetails s left join  courses c on s.course_id = c.course_id;
++------------+-----------+------------------------+-----------------+-----------+
+| first_name | course_id | course_name            | duration_months | fees      |
++------------+-----------+------------------------+-----------------+-----------+
+| Rahul      |         1 | Computer Science       |              36 | 120000.00 |
+| Priya      |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Amit       |         3 | Civil Engineering      |              48 | 140000.00 |
+| Neha       |         1 | Computer Science       |              36 | 120000.00 |
+| Vikram     |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Ritu       |         3 | Civil Engineering      |              48 | 140000.00 |
+| Suresh     |         1 | Computer Science       |              36 | 120000.00 |
+| Kavita     |         2 | Mechanical Engineering |              48 | 150000.00 |
+| Manish     |         3 | Civil Engineering      |              48 | 140000.00 |
+| Anjali     |         1 | Computer Science       |              36 | 120000.00 |
++------------+-----------+------------------------+-----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+student and coures name but show no course is null
+
+mysql> select s.first_name,s.last_name,c.course_name from studentDetails s left join courses c on s.course_id = c.course_id;
++------------+-----------+------------------------+
+| first_name | last_name | course_name            |
++------------+-----------+------------------------+
+| Rahul      | Sharma    | Computer Science       |
+| Priya      | Verma     | Mechanical Engineering |
+| Amit       | Kumar     | Civil Engineering      |
+| Neha       | Singh     | Computer Science       |
+| Vikram     | Patel     | Mechanical Engineering |
+| Ritu       | Mehta     | Civil Engineering      |
+| Suresh     | Yadav     | Computer Science       |
+| Kavita     | Rao       | Mechanical Engineering |
+| Manish     | Gupta     | Civil Engineering      |
+| Anjali     | Chopra    | Computer Science       |
++------------+-----------+------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select s.first_name,s.last_name,c.course_name from studentDetails s right join courses c on s.course_id = c.course_id;
++------------+-----------+------------------------+
+| first_name | last_name | course_name            |
++------------+-----------+------------------------+
+| Anjali     | Chopra    | Computer Science       |
+| Suresh     | Yadav     | Computer Science       |
+| Neha       | Singh     | Computer Science       |
+| Rahul      | Sharma    | Computer Science       |
+| Kavita     | Rao       | Mechanical Engineering |
+| Vikram     | Patel     | Mechanical Engineering |
+| Priya      | Verma     | Mechanical Engineering |
+| Manish     | Gupta     | Civil Engineering      |
+| Ritu       | Mehta     | Civil Engineering      |
+| Amit       | Kumar     | Civil Engineering      |
+| NULL       | NULL      | Electrical Engineering |
+| NULL       | NULL      | Information Technology |
++------------+-----------+------------------------+
+12 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select s.first_name,s.last_name,s.city, c.course_name from studentDetails s right join courses c on s.course_id = c.course_id where s.city = 'bhopal';
++------------+-----------+--------+------------------------+
+| first_name | last_name | city   | course_name            |
++------------+-----------+--------+------------------------+
+| Priya      | Verma     | Bhopal | Mechanical Engineering |
+| Ritu       | Mehta     | Bhopal | Civil Engineering      |
++------------+-----------+--------+------------------------+
+2 rows in set (0.00 sec)
+
+
+CREATE TABLE teachers (
+    teacher_id INT PRIMARY KEY,
+    teacher_name VARCHAR(100) NOT NULL,
+    course_id INT
+);
+INSERT INTO teachers (teacher_id, teacher_name, course_id) VALUES
+(1, 'Dr. Sharma', 1),   
+(2, 'Prof. Verma', 2),  
+(3, 'Dr. Khan', 6),     
+(4, 'Ms. Mehta', 3),    
+(5, 'Mr. Gupta', 10);   
+
+
+
+
+mysql> select s.first_name,s.last_name,c.course_name,c.fees,t.teacher_name from studentDetails s left join courses c on s.course_id = c.course_id left join teachers t on s.course_id = t.course_id;
++------------+-----------+------------------------+-----------+--------------+
+| first_name | last_name | course_name            | fees      | teacher_name |
++------------+-----------+------------------------+-----------+--------------+
+| Rahul      | Sharma    | Computer Science       | 120000.00 | Dr. Sharma   |
+| Priya      | Verma     | Mechanical Engineering | 150000.00 | Prof. Verma  |
+| Amit       | Kumar     | Civil Engineering      | 140000.00 | Ms. Mehta    |
+| Neha       | Singh     | Computer Science       | 120000.00 | Dr. Sharma   |
+| Vikram     | Patel     | Mechanical Engineering | 150000.00 | Prof. Verma  |
+| Ritu       | Mehta     | Civil Engineering      | 140000.00 | Ms. Mehta    |
+| Suresh     | Yadav     | Computer Science       | 120000.00 | Dr. Sharma   |
+| Kavita     | Rao       | Mechanical Engineering | 150000.00 | Prof. Verma  |
+| Manish     | Gupta     | Civil Engineering      | 140000.00 | Ms. Mehta    |
+| Anjali     | Chopra    | Computer Science       | 120000.00 | Dr. Sharma   |
++------------+-----------+------------------------+-----------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select s.first_name,s.last_name,c.course_name from studentDetails s cross join courses c ;
++------------+-----------+------------------------+
+| first_name | last_name | course_name            |
++------------+-----------+------------------------+
+| Rahul      | Sharma    | Information Technology |
+| Rahul      | Sharma    | Electrical Engineering |
+| Rahul      | Sharma    | Civil Engineering      |
+| Rahul      | Sharma    | Mechanical Engineering |
+| Rahul      | Sharma    | Computer Science       |
+| Priya      | Verma     | Information Technology |
+| Priya      | Verma     | Electrical Engineering |
+| Priya      | Verma     | Civil Engineering      |
+| Priya      | Verma     | Mechanical Engineering |
+| Priya      | Verma     | Computer Science       |
+| Amit       | Kumar     | Information Technology |
+| Amit       | Kumar     | Electrical Engineering |
+| Amit       | Kumar     | Civil Engineering      |
+| Amit       | Kumar     | Mechanical Engineering |
+| Amit       | Kumar     | Computer Science       |
+| Neha       | Singh     | Information Technology |
+| Neha       | Singh     | Electrical Engineering |
+| Neha       | Singh     | Civil Engineering      |
+| Neha       | Singh     | Mechanical Engineering |
+| Neha       | Singh     | Computer Science       |
+| Vikram     | Patel     | Information Technology |
+| Vikram     | Patel     | Electrical Engineering |
+| Vikram     | Patel     | Civil Engineering      |
+| Vikram     | Patel     | Mechanical Engineering |
+| Vikram     | Patel     | Computer Science       |
+| Ritu       | Mehta     | Information Technology |
+| Ritu       | Mehta     | Electrical Engineering |
+| Ritu       | Mehta     | Civil Engineering      |
+| Ritu       | Mehta     | Mechanical Engineering |
+| Ritu       | Mehta     | Computer Science       |
+| Suresh     | Yadav     | Information Technology |
+| Suresh     | Yadav     | Electrical Engineering |
+| Suresh     | Yadav     | Civil Engineering      |
+| Suresh     | Yadav     | Mechanical Engineering |
+| Suresh     | Yadav     | Computer Science       |
+| Kavita     | Rao       | Information Technology |
+| Kavita     | Rao       | Electrical Engineering |
+| Kavita     | Rao       | Civil Engineering      |
+| Kavita     | Rao       | Mechanical Engineering |
+| Kavita     | Rao       | Computer Science       |
+| Manish     | Gupta     | Information Technology |
+| Manish     | Gupta     | Electrical Engineering |
+| Manish     | Gupta     | Civil Engineering      |
+| Manish     | Gupta     | Mechanical Engineering |
+| Manish     | Gupta     | Computer Science       |
+| Anjali     | Chopra    | Information Technology |
+| Anjali     | Chopra    | Electrical Engineering |
+| Anjali     | Chopra    | Civil Engineering      |
+| Anjali     | Chopra    | Mechanical Engineering |
+| Anjali     | Chopra    | Computer Science       |
++------------+-----------+------------------------+
+50 rows in set (0.00 sec)
+
+
+mysql> select s.first_name,s.last_name,c.course_name from studentDetails s cross join courses c where s.course_id = c.course_id;
++------------+-----------+------------------------+
+| first_name | last_name | course_name            |
++------------+-----------+------------------------+
+| Rahul      | Sharma    | Computer Science       |
+| Priya      | Verma     | Mechanical Engineering |
+| Amit       | Kumar     | Civil Engineering      |
+| Neha       | Singh     | Computer Science       |
+| Vikram     | Patel     | Mechanical Engineering |
+| Ritu       | Mehta     | Civil Engineering      |
+| Suresh     | Yadav     | Computer Science       |
+| Kavita     | Rao       | Mechanical Engineering |
+| Manish     | Gupta     | Civil Engineering      |
+| Anjali     | Chopra    | Computer Science       |
++------------+-----------+------------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+concat()
+mysql> select concat(first_name," ",last_name) as full_name from studentDetails;
++---------------+
+| full_name     |
++---------------+
+| Rahul Sharma  |
+| Priya Verma   |
+| Amit Kumar    |
+| Neha Singh    |
+| Vikram Patel  |
+| Ritu Mehta    |
+| Suresh Yadav  |
+| Kavita Rao    |
+| Manish Gupta  |
+| Anjali Chopra |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select concat_ws(',',first_name,last_name) as full_name from studentDetails;
++---------------+
+| full_name     |
++---------------+
+| Rahul,Sharma  |
+| Priya,Verma   |
+| Amit,Kumar    |
+| Neha,Singh    |
+| Vikram,Patel  |
+| Ritu,Mehta    |
+| Suresh,Yadav  |
+| Kavita,Rao    |
+| Manish,Gupta  |
+| Anjali,Chopra |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select length(first_name) as first_name_length from studentDetails;
++-------------------+
+| first_name_length |
++-------------------+
+|                 5 |
+|                 5 |
+|                 4 |
+|                 4 |
+|                 6 |
+|                 4 |
+|                 6 |
+|                 6 |
+|                 6 |
+|                 6 |
++-------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select char_length(first_name) as first_name_char_length from studentDetails;
++------------------------+
+| first_name_char_length |
++------------------------+
+|                      5 |
+|                      5 |
+|                      4 |
+|                      4 |
+|                      6 |
+|                      4 |
+|                      6 |
+|                      6 |
+|                      6 |
+|                      6 |
++------------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select upper("mayank");
++-----------------+
+| upper("mayank") |
++-----------------+
+| MAYANK          |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select lower("MAYANK");
++-----------------+
+| lower("MAYANK") |
++-----------------+
+| mayank          |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select left("mayank",3);
++------------------+
+| left("mayank",3) |
++------------------+
+| may              |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+mysql> select right("mayank",3);
++-------------------+
+| right("mayank",3) |
++-------------------+
+| ank               |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+mysql> select substring("mayank",2,2);
++-------------------------+
+| substring("mayank",2,2) |
++-------------------------+
+| ay                      |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select substring("mayank",2);
++-----------------------+
+| substring("mayank",2) |
++-----------------------+
+| ayank                 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select round(1653.3234324,1)
+    -> ;
++-----------------------+
+| round(1653.3234324,1) |
++-----------------------+
+|                1653.3 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+	
+
+
+
+
+
+
+
+
+
+
+
+
