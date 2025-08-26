@@ -2339,7 +2339,936 @@ mysql> select round(1653.3234324,1)
 1 row in set (0.00 sec)
 
 mysql> 
-	
+
+
+mysql> select truncate(356.3576325,1);
++-------------------------+
+| truncate(356.3576325,1) |
++-------------------------+
+|                   356.3 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select mod(9,3);
++----------+
+| mod(9,3) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select mod(10,3);
++-----------+
+| mod(10,3) |
++-----------+
+|         1 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(64);
++----------+
+| sqrt(64) |
++----------+
+|        8 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select power(4,2);
++------------+
+| power(4,2) |
++------------+
+|         16 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select power(2,3);
++------------+
+| power(2,3) |
++------------+
+|          8 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select truncate(rand()*10,0);
++-----------------------+
+| truncate(rand()*10,0) |
++-----------------------+
+|                     2 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select sign(-35473260);
++-----------------+
+| sign(-35473260) |
++-----------------+
+|              -1 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select sign(35473260);
++----------------+
+| sign(35473260) |
++----------------+
+|              1 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2025-08-21 13:06:39 |
++---------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2025-08-21 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 13:08:53       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+mysql> select time(now());
++-------------+
+| time(now()) |
++-------------+
+| 13:10:53    |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select year(now());
++-------------+
+| year(now()) |
++-------------+
+|        2025 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select month(now());
++--------------+
+| month(now()) |
++--------------+
+|            8 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+mysql> select day(now());
++------------+
+| day(now()) |
++------------+
+|         21 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select dayname(now());
++----------------+
+| dayname(now()) |
++----------------+
+| Thursday       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select monthname(now());
++------------------+
+| monthname(now()) |
++------------------+
+| August           |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+mysql> select week(now());
++-------------+
+| week(now()) |
++-------------+
+|          33 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select hour(now());
++-------------+
+| hour(now()) |
++-------------+
+|          13 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select minute(now());
++---------------+
+| minute(now()) |
++---------------+
+|            14 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select second(now());
++---------------+
+| second(now()) |
++---------------+
+|            44 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,fees_paid,if(fees_paid >= 15000,"fees done","remaining fees") as fees_status from studentDetails;
++------------+-----------+-----------+----------------+
+| first_name | last_name | fees_paid | fees_status    |
++------------+-----------+-----------+----------------+
+| Rahul      | Sharma    |  15000.00 | fees done      |
+| Priya      | Verma     |  20000.00 | fees done      |
+| Amit       | Kumar     |  12000.00 | remaining fees |
+| Neha       | Singh     |  15000.00 | fees done      |
+| Vikram     | Patel     |  25000.00 | fees done      |
+| Ritu       | Mehta     |  10000.00 | remaining fees |
+| Suresh     | Yadav     |  15000.00 | fees done      |
+| Kavita     | Rao       |  22000.00 | fees done      |
+| Manish     | Gupta     |  11000.00 | remaining fees |
+| Anjali     | Chopra    |  15000.00 | fees done      |
++------------+-----------+-----------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,fees_paid,if(fees_paid > 15000,"fees paid more than 15000","fees is not paid more than 15000") as fees_status from
+studentDetails;
++------------+-----------+-----------+----------------------------------+
+| first_name | last_name | fees_paid | fees_status                      |
++------------+-----------+-----------+----------------------------------+
+| Rahul      | Sharma    |  15000.00 | fees is not paid more than 15000 |
+| Priya      | Verma     |  20000.00 | fees paid more than 15000        |
+| Amit       | Kumar     |  12000.00 | fees is not paid more than 15000 |
+| Neha       | Singh     |  15000.00 | fees is not paid more than 15000 |
+| Vikram     | Patel     |  25000.00 | fees paid more than 15000        |
+| Ritu       | Mehta     |  10000.00 | fees is not paid more than 15000 |
+| Suresh     | Yadav     |  15000.00 | fees is not paid more than 15000 |
+| Kavita     | Rao       |  22000.00 | fees paid more than 15000        |
+| Manish     | Gupta     |  11000.00 | fees is not paid more than 15000 |
+| Anjali     | Chopra    |  15000.00 | fees is not paid more than 15000 |
++------------+-----------+-----------+----------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,city, if(city = 'indore',"from indore","not from indore") as residence from studentDetails;
++------------+-----------+----------+-----------------+
+| first_name | last_name | city     | residence       |
++------------+-----------+----------+-----------------+
+| Rahul      | Sharma    | Indore   | from indore     |
+| Priya      | Verma     | Bhopal   | not from indore |
+| Amit       | Kumar     | Gwalior  | not from indore |
+| Neha       | Singh     | Ujjain   | not from indore |
+| Vikram     | Patel     | Indore   | from indore     |
+| Ritu       | Mehta     | Bhopal   | not from indore |
+| Suresh     | Yadav     | Jabalpur | not from indore |
+| Kavita     | Rao       | Rewa     | not from indore |
+| Manish     | Gupta     | Satna    | not from indore |
+| Anjali     | Chopra    | Sagar    | not from indore |
++------------+-----------+----------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,city, if(gender = 'female',"is female","is male") as gender from studentDetails;
++------------+-----------+----------+-----------+
+| first_name | last_name | city     | gender    |
++------------+-----------+----------+-----------+
+| Rahul      | Sharma    | Indore   | is male   |
+| Priya      | Verma     | Bhopal   | is female |
+| Amit       | Kumar     | Gwalior  | is male   |
+| Neha       | Singh     | Ujjain   | is female |
+| Vikram     | Patel     | Indore   | is male   |
+| Ritu       | Mehta     | Bhopal   | is female |
+| Suresh     | Yadav     | Jabalpur | is male   |
+| Kavita     | Rao       | Rewa     | is female |
+| Manish     | Gupta     | Satna    | is male   |
+| Anjali     | Chopra    | Sagar    | is female |
++------------+-----------+----------+-----------+
+10 rows in set (0.01 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,city,year(date_of_birth),if(year(date_of_birth) < 2000,"born before 2000","not born before 2000") as born_info from
+ studentDetails;
++------------+-----------+----------+---------------------+----------------------+
+| first_name | last_name | city     | year(date_of_birth) | born_info            |
++------------+-----------+----------+---------------------+----------------------+
+| Rahul      | Sharma    | Indore   |                2000 | not born before 2000 |
+| Priya      | Verma     | Bhopal   |                1999 | born before 2000     |
+| Amit       | Kumar     | Gwalior  |                2001 | not born before 2000 |
+| Neha       | Singh     | Ujjain   |                1998 | born before 2000     |
+| Vikram     | Patel     | Indore   |                2000 | not born before 2000 |
+| Ritu       | Mehta     | Bhopal   |                1999 | born before 2000     |
+| Suresh     | Yadav     | Jabalpur |                2001 | not born before 2000 |
+| Kavita     | Rao       | Rewa     |                2000 | not born before 2000 |
+| Manish     | Gupta     | Satna    |                1998 | born before 2000     |
+| Anjali     | Chopra    | Sagar    |                2001 | not born before 2000 |
++------------+-----------+----------+---------------------+----------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select first_name,last_name,pincode,ifnull(pincode,"NA") as PIN from studentDetails;
++------------+-----------+---------+--------+
+| first_name | last_name | pincode | PIN    |
++------------+-----------+---------+--------+
+| Rahul      | Sharma    | 452001  | 452001 |
+| Priya      | Verma     | 462001  | 462001 |
+| Amit       | Kumar     | 474001  | 474001 |
+| Neha       | Singh     | 456001  | 456001 |
+| Vikram     | Patel     | 452010  | 452010 |
+| Ritu       | Mehta     | 462020  | 462020 |
+| Suresh     | Yadav     | 482001  | 482001 |
+| Kavita     | Rao       | 486001  | 486001 |
+| Manish     | Gupta     | 485001  | 485001 |
+| Anjali     | Chopra    | 470001  | 470001 |
+| Mayank     | Verma     | NULL    | NA     |
++------------+-----------+---------+--------+
+11 rows in set (0.00 sec)
+
+mysql> select first_name,last_name,gender,nullif(gender,"male") as gen  from studentDetails;
++------------+-----------+--------+--------+
+| first_name | last_name | gender | gen    |
++------------+-----------+--------+--------+
+| Rahul      | Sharma    | Male   | NULL   |
+| Priya      | Verma     | Female | Female |
+| Amit       | Kumar     | Male   | NULL   |
+| Neha       | Singh     | Female | Female |
+| Vikram     | Patel     | Male   | NULL   |
+| Ritu       | Mehta     | Female | Female |
+| Suresh     | Yadav     | Male   | NULL   |
+| Kavita     | Rao       | Female | Female |
+| Manish     | Gupta     | Male   | NULL   |
+| Anjali     | Chopra    | Female | Female |
+| Mayank     | Verma     | Male   | NULL   |
++------------+-----------+--------+--------+
+11 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select first_name,last_name,fees_paid,
+    -> case
+    -> when fees_paid >= 20000 then "fees done"
+    -> when fees_paid >= 15000 then "2nd installment complete"
+    -> when fees_paid >= 10000 then "1st installment done"
+    -> else "addmission incomplete"
+    -> end as fees_status from studentDetails;
++------------+-----------+-----------+--------------------------+
+| first_name | last_name | fees_paid | fees_status              |
++------------+-----------+-----------+--------------------------+
+| Rahul      | Sharma    |  15000.00 | 2nd installment complete |
+| Priya      | Verma     |  20000.00 | fees done                |
+| Amit       | Kumar     |  12000.00 | 1st installment done     |
+| Neha       | Singh     |  15000.00 | 2nd installment complete |
+| Vikram     | Patel     |  25000.00 | fees done                |
+| Ritu       | Mehta     |  10000.00 | 1st installment done     |
+| Suresh     | Yadav     |  15000.00 | 2nd installment complete |
+| Kavita     | Rao       |  22000.00 | fees done                |
+| Manish     | Gupta     |  11000.00 | 1st installment done     |
+| Anjali     | Chopra    |  15000.00 | 2nd installment complete |
+| Mayank     | Verma     |      NULL | addmission incomplete    |
++------------+-----------+-----------+--------------------------+
+11 rows in set (0.00 sec)
+
+mysql> 
+
+
+
+mayank@mayank-HP-250-G7-Notebook-PC:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.43-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select MySchool;
+ERROR 1054 (42S22): Unknown column 'MySchool' in 'field list'
+mysql> use MySchool;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table data (id int,dep varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into data values(100,"HR"),(150,"HR"),(200,"Sales"),(250,"Sales"),(300,"HR"),(100,"PURCHASE");
+Query OK, 6 rows affected (0.00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select id,dep,sum(id) over (partition by dep) as total from data;
++------+----------+-------+
+| id   | dep      | total |
++------+----------+-------+
+|  100 | HR       |   550 |
+|  150 | HR       |   550 |
+|  300 | HR       |   550 |
+|  100 | PURCHASE |   100 |
+|  200 | Sales    |   450 |
+|  250 | Sales    |   450 |
++------+----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select * from data;
++------+----------+
+| id   | dep      |
++------+----------+
+|  100 | HR       |
+|  150 | HR       |
+|  200 | Sales    |
+|  250 | Sales    |
+|  300 | HR       |
+|  100 | PURCHASE |
++------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,min(id) over (partition by dep) as total from data;
++------+----------+-------+
+| id   | dep      | total |
++------+----------+-------+
+|  100 | HR       |   100 |
+|  150 | HR       |   100 |
+|  300 | HR       |   100 |
+|  100 | PURCHASE |   100 |
+|  200 | Sales    |   200 |
+|  250 | Sales    |   200 |
++------+----------+-------+
+6 rows in set (0.01 sec)
+
+mysql> select id,dep,max(id) over (partition by dep) as total from data;
++------+----------+-------+
+| id   | dep      | total |
++------+----------+-------+
+|  100 | HR       |   300 |
+|  150 | HR       |   300 |
+|  300 | HR       |   300 |
+|  100 | PURCHASE |   100 |
+|  200 | Sales    |   250 |
+|  250 | Sales    |   250 |
++------+----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,count(id) over (partition by dep) as total from data;
++------+----------+-------+
+| id   | dep      | total |
++------+----------+-------+
+|  100 | HR       |     3 |
+|  150 | HR       |     3 |
+|  300 | HR       |     3 |
+|  100 | PURCHASE |     1 |
+|  200 | Sales    |     2 |
+|  250 | Sales    |     2 |
++------+----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select * from data;
++------+----------+
+| id   | dep      |
++------+----------+
+|  100 | HR       |
+|  150 | HR       |
+|  200 | Sales    |
+|  250 | Sales    |
+|  300 | HR       |
+|  100 | PURCHASE |
++------+----------+
+6 rows in set (0.01 sec)
+
+mysql> select id,dep,ROW_NUMBER() over(order by id) as ramk_num from data;
++------+----------+----------+
+| id   | dep      | ramk_num |
++------+----------+----------+
+|  100 | HR       |        1 |
+|  100 | PURCHASE |        2 |
+|  150 | HR       |        3 |
+|  200 | Sales    |        4 |
+|  250 | Sales    |        5 |
+|  300 | HR       |        6 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,ROW_NUMBER() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        1 |
+|  100 | PURCHASE |        2 |
+|  150 | HR       |        3 |
+|  200 | Sales    |        4 |
+|  250 | Sales    |        5 |
+|  300 | HR       |        6 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,rank() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        1 |
+|  100 | PURCHASE |        1 |
+|  150 | HR       |        3 |
+|  200 | Sales    |        4 |
+|  250 | Sales    |        5 |
+|  300 | HR       |        6 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,sum(id) over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |      200 |
+|  100 | PURCHASE |      200 |
+|  150 | HR       |      350 |
+|  200 | Sales    |      550 |
+|  250 | Sales    |      800 |
+|  300 | HR       |     1100 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,rank() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        1 |
+|  100 | PURCHASE |        1 |
+|  150 | HR       |        3 |
+|  200 | Sales    |        4 |
+|  250 | Sales    |        5 |
+|  300 | HR       |        6 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,dense_rank() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        1 |
+|  100 | PURCHASE |        1 |
+|  150 | HR       |        2 |
+|  200 | Sales    |        3 |
+|  250 | Sales    |        4 |
+|  300 | HR       |        5 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,percent_rank() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        0 |
+|  100 | PURCHASE |        0 |
+|  150 | HR       |      0.4 |
+|  200 | Sales    |      0.6 |
+|  250 | Sales    |      0.8 |
+|  300 | HR       |        1 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,percent_rank() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        0 |
+|  100 | PURCHASE |        0 |
+|  150 | HR       |      0.4 |
+|  200 | Sales    |      0.6 |
+|  250 | Sales    |      0.8 |
+|  300 | HR       |        1 |
++------+----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,percent_rank() over(order by id) as rank_num from data;
++------+----------+----------+
+| id   | dep      | rank_num |
++------+----------+----------+
+|  100 | HR       |        0 |
+|  100 | PURCHASE |        0 |
+|  150 | HR       |      0.4 |
+|  200 | Sales    |      0.6 |
+|  250 | Sales    |      0.8 |
+|  300 | HR       |        1 |
++------+----------+----------+
+6 rows in set (0.01 sec)
+
+mysql> select id,dep,lead(id) over(order by id) as "lead" from data;
++------+----------+------+
+| id   | dep      | lead |
++------+----------+------+
+|  100 | HR       |  100 |
+|  100 | PURCHASE |  150 |
+|  150 | HR       |  200 |
+|  200 | Sales    |  250 |
+|  250 | Sales    |  300 |
+|  300 | HR       | NULL |
++------+----------+------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,lead(id) over(order by dep) as "lead" from data;
++------+----------+------+
+| id   | dep      | lead |
++------+----------+------+
+|  100 | HR       |  150 |
+|  150 | HR       |  300 |
+|  300 | HR       |  100 |
+|  100 | PURCHASE |  200 |
+|  200 | Sales    |  250 |
+|  250 | Sales    | NULL |
++------+----------+------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,lead(id) over(order by id) as "lead" from data;
++------+----------+------+
+| id   | dep      | lead |
++------+----------+------+
+|  100 | HR       |  100 |
+|  100 | PURCHASE |  150 |
+|  150 | HR       |  200 |
+|  200 | Sales    |  250 |
+|  250 | Sales    |  300 |
+|  300 | HR       | NULL |
++------+----------+------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,lead(id,2) over(order by id) as "lead" from data;
++------+----------+------+
+| id   | dep      | lead |
++------+----------+------+
+|  100 | HR       |  150 |
+|  100 | PURCHASE |  200 |
+|  150 | HR       |  250 |
+|  200 | Sales    |  300 |
+|  250 | Sales    | NULL |
+|  300 | HR       | NULL |
++------+----------+------+
+6 rows in set (0.00 sec)
+
+mysql> select id,dep,lag(id,2) over(order by id) as "lead" from data;
++------+----------+------+
+| id   | dep      | lead |
++------+----------+------+
+|  100 | HR       | NULL |
+|  100 | PURCHASE | NULL |
+|  150 | HR       |  100 |
+|  200 | Sales    |  100 |
+|  250 | Sales    |  150 |
+|  300 | HR       |  200 |
++------+----------+------+
+6 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> delimiter //
+mysql> create procedure updatedata(in student_Id int,in newfees decimal(10,2))
+    -> begin
+    -> update studentDetails set fees_paid = newfees
+    -> where studentId = studentId;  end // delimiter ;
+Query OK, 0 rows affected (0.01 sec)
+
+    -> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails;
+    -> ^C
+mysql> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails;
+    -> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails //
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road       | Indore   | Madhya Pradesh |         1 |  15000.00 |
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines    | Bhopal   | Madhya Pradesh |         2 |  20000.00 |
+|         3 | Amit       | Kumar     | 2001-01-18    | 78 Park Street    | Gwalior  | Madhya Pradesh |         3 |  12000.00 |
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain   | Madhya Pradesh |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar    | Indore   | Madhya Pradesh |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road        | Bhopal   | Madhya Pradesh |         3 |  10000.00 |
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony     | Jabalpur | Madhya Pradesh |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | 2000-06-28    | 67 Main Street    | Rewa     | Madhya Pradesh |         2 |  22000.00 |
+|         9 | Manish     | Gupta     | 1998-04-19    | 12 Shastri Nagar  | Satna    | Madhya Pradesh |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | 2001-12-03    | 45 Tilak Road     | Sagar    | Madhya Pradesh |         1 |  15000.00 |
+|        11 | Mayank     | Verma     | 2025-08-21    | NULL              | NULL     | NULL           |         2 |  25000.00 |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+11 rows in set (0.00 sec)
+
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road       | Indore   | Madhya Pradesh |         1 |  15000.00 |
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines    | Bhopal   | Madhya Pradesh |         2 |  20000.00 |
+|         3 | Amit       | Kumar     | 2001-01-18    | 78 Park Street    | Gwalior  | Madhya Pradesh |         3 |  12000.00 |
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain   | Madhya Pradesh |         1 |  15000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar    | Indore   | Madhya Pradesh |         2 |  25000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road        | Bhopal   | Madhya Pradesh |         3 |  10000.00 |
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony     | Jabalpur | Madhya Pradesh |         1 |  15000.00 |
+|         8 | Kavita     | Rao       | 2000-06-28    | 67 Main Street    | Rewa     | Madhya Pradesh |         2 |  22000.00 |
+|         9 | Manish     | Gupta     | 1998-04-19    | 12 Shastri Nagar  | Satna    | Madhya Pradesh |         3 |  11000.00 |
+|        10 | Anjali     | Chopra    | 2001-12-03    | 45 Tilak Road     | Sagar    | Madhya Pradesh |         1 |  15000.00 |
+|        11 | Mayank     | Verma     | 2025-08-21    | NULL              | NULL     | NULL           |         2 |  25000.00 |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+11 rows in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure updatedata(in student_Id int,in newfees decimal(10,2)) begin update studentDetails set fees_paid = newfees where studentId = student_Id;  end//
+ERROR 1304 (42000): PROCEDURE updatedata already exists
+mysql> call updatedata(5,40000);
+    -> //
+Query OK, 11 rows affected (0.00 sec)
+
+mysql> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails //
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road       | Indore   | Madhya Pradesh |         1 |  40000.00 |
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines    | Bhopal   | Madhya Pradesh |         2 |  40000.00 |
+|         3 | Amit       | Kumar     | 2001-01-18    | 78 Park Street    | Gwalior  | Madhya Pradesh |         3 |  40000.00 |
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain   | Madhya Pradesh |         1 |  40000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar    | Indore   | Madhya Pradesh |         2 |  40000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road        | Bhopal   | Madhya Pradesh |         3 |  40000.00 |
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony     | Jabalpur | Madhya Pradesh |         1 |  40000.00 |
+|         8 | Kavita     | Rao       | 2000-06-28    | 67 Main Street    | Rewa     | Madhya Pradesh |         2 |  40000.00 |
+|         9 | Manish     | Gupta     | 1998-04-19    | 12 Shastri Nagar  | Satna    | Madhya Pradesh |         3 |  40000.00 |
+|        10 | Anjali     | Chopra    | 2001-12-03    | 45 Tilak Road     | Sagar    | Madhya Pradesh |         1 |  40000.00 |
+|        11 | Mayank     | Verma     | 2025-08-21    | NULL              | NULL     | NULL           |         2 |  40000.00 |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+11 rows in set (0.00 sec)
+
+mysql> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails;
+    -> ^C
+mysql> delimiter ;
+mysql> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails;
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road       | Indore   | Madhya Pradesh |         1 |  40000.00 |
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines    | Bhopal   | Madhya Pradesh |         2 |  40000.00 |
+|         3 | Amit       | Kumar     | 2001-01-18    | 78 Park Street    | Gwalior  | Madhya Pradesh |         3 |  40000.00 |
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain   | Madhya Pradesh |         1 |  40000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar    | Indore   | Madhya Pradesh |         2 |  40000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road        | Bhopal   | Madhya Pradesh |         3 |  40000.00 |
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony     | Jabalpur | Madhya Pradesh |         1 |  40000.00 |
+|         8 | Kavita     | Rao       | 2000-06-28    | 67 Main Street    | Rewa     | Madhya Pradesh |         2 |  40000.00 |
+|         9 | Manish     | Gupta     | 1998-04-19    | 12 Shastri Nagar  | Satna    | Madhya Pradesh |         3 |  40000.00 |
+|        10 | Anjali     | Chopra    | 2001-12-03    | 45 Tilak Road     | Sagar    | Madhya Pradesh |         1 |  40000.00 |
+|        11 | Mayank     | Verma     | 2025-08-21    | NULL              | NULL     | NULL           |         2 |  40000.00 |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+11 rows in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure countstudent()
+    -> ^C
+mysql> create procedure countstudent(in courseId int)
+    -> begin 
+    -> select count(*) from studentDetails where course_id = courseId;
+    -> delimiter ; 
+    -> delimiter //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '; delimiter' at line 4
+mysql> delimiter //
+mysql> create procedure countstudent(in courseId int)
+    -> begin
+    -> select count(*) from studentDetails where course_id = courseId;
+    -> end // 
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
+mysql> call countstudent(3);
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call countstudent(1);
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure students_from_city(in cityName varchar(20))
+    -> begin
+    -> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails where city = cityName;
+    -> end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> call students_from_city('indore');
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address        | city   | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road    | Indore | Madhya Pradesh |         1 |  40000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar | Indore | Madhya Pradesh |         2 |  40000.00 |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('dewas');
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('bhopal');
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address        | city   | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines | Bhopal | Madhya Pradesh |         2 |  40000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road     | Bhopal | Madhya Pradesh |         3 |  40000.00 |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('dfdsaf');
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('dewas');
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('bhopal');
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address        | city   | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines | Bhopal | Madhya Pradesh |         2 |  40000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road     | Bhopal | Madhya Pradesh |         3 |  40000.00 |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('indore');
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address        | city   | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road    | Indore | Madhya Pradesh |         1 |  40000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar | Indore | Madhya Pradesh |         2 |  40000.00 |
++-----------+------------+-----------+---------------+----------------+--------+----------------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call students_from_city('jabalpur');
++-----------+------------+-----------+---------------+---------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address       | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+---------------+----------+----------------+-----------+-----------+
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony | Jabalpur | Madhya Pradesh |         1 |  40000.00 |
++-----------+------------+-----------+---------------+---------------+----------+----------------+-----------+-----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails;
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road       | Indore   | Madhya Pradesh |         1 |  40000.00 |
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines    | Bhopal   | Madhya Pradesh |         2 |  40000.00 |
+|         3 | Amit       | Kumar     | 2001-01-18    | 78 Park Street    | Gwalior  | Madhya Pradesh |         3 |  40000.00 |
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain   | Madhya Pradesh |         1 |  40000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar    | Indore   | Madhya Pradesh |         2 |  40000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road        | Bhopal   | Madhya Pradesh |         3 |  40000.00 |
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony     | Jabalpur | Madhya Pradesh |         1 |  40000.00 |
+|         8 | Kavita     | Rao       | 2000-06-28    | 67 Main Street    | Rewa     | Madhya Pradesh |         2 |  40000.00 |
+|         9 | Manish     | Gupta     | 1998-04-19    | 12 Shastri Nagar  | Satna    | Madhya Pradesh |         3 |  40000.00 |
+|        10 | Anjali     | Chopra    | 2001-12-03    | 45 Tilak Road     | Sagar    | Madhya Pradesh |         1 |  40000.00 |
+|        11 | Mayank     | Verma     | 2025-08-21    | NULL              | NULL     | NULL           |         2 |  40000.00 |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+11 rows in set (0.00 sec)
+
+mysql> call students_from_city('ujjain');
++-----------+------------+-----------+---------------+-------------------+--------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city   | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+--------+----------------+-----------+-----------+
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain | Madhya Pradesh |         1 |  40000.00 |
++-----------+------------+-----------+---------------+-------------------+--------+----------------+-----------+-----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select studentId,first_name,last_name,date_of_birth,address,city,state,course_id,fees_paid from studentDetails;
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+| studentId | first_name | last_name | date_of_birth | address           | city     | state          | course_id | fees_paid |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+|         1 | Rahul      | Sharma    | 2000-05-12    | 123 MG Road       | Indore   | Madhya Pradesh |         1 |  40000.00 |
+|         2 | Priya      | Verma     | 1999-08-25    | 45 Civil Lines    | Bhopal   | Madhya Pradesh |         2 |  40000.00 |
+|         3 | Amit       | Kumar     | 2001-01-18    | 78 Park Street    | Gwalior  | Madhya Pradesh |         3 |  40000.00 |
+|         4 | Neha       | Singh     | 1998-07-22    | 12 Rajendra Nagar | Ujjain   | Madhya Pradesh |         1 |  40000.00 |
+|         5 | Vikram     | Patel     | 2000-03-10    | 89 Vijay Nagar    | Indore   | Madhya Pradesh |         2 |  40000.00 |
+|         6 | Ritu       | Mehta     | 1999-11-05    | 56 AB Road        | Bhopal   | Madhya Pradesh |         3 |  40000.00 |
+|         7 | Suresh     | Yadav     | 2001-09-14    | 23 New Colony     | Jabalpur | Madhya Pradesh |         1 |  40000.00 |
+|         8 | Kavita     | Rao       | 2000-06-28    | 67 Main Street    | Rewa     | Madhya Pradesh |         2 |  40000.00 |
+|         9 | Manish     | Gupta     | 1998-04-19    | 12 Shastri Nagar  | Satna    | Madhya Pradesh |         3 |  40000.00 |
+|        10 | Anjali     | Chopra    | 2001-12-03    | 45 Tilak Road     | Sagar    | Madhya Pradesh |         1 |  40000.00 |
+|        11 | Mayank     | Verma     | 2025-08-21    | NULL              | NULL     | NULL           |         2 |  40000.00 |
++-----------+------------+-----------+---------------+-------------------+----------+----------------+-----------+-----------+
+11 rows in set (0.00 sec)
+
+
+
+
+
 
 
 
